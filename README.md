@@ -8,21 +8,6 @@ Each optimization technique is implemented, measured with real data (100,000+ ro
 
 ---
 
-## 📚 Table of Contents
-
-- [Why This Project?](#-why-this-project)
-- [Tech Stack](#-tech-stack)
-- [Setup Instructions](#-setup-instructions)
-- [Optimization Roadmap](#-optimization-roadmap)
-- [Benchmark Results](#-benchmark-results)
-- [Project Structure](#-project-structure)
-- [Key Concepts Explained](#-key-concepts-explained)
-- [How to Measure Performance](#-how-to-measure-performance)
-- [Resources](#-resources)
-- [License](#-license)
-
----
-
 ## 🎯 Why This Project?
 
 Most tutorials explain *what* an index is, but rarely show the **before/after impact** with real data. This project fixes that.
@@ -41,10 +26,10 @@ Whether you're preparing for a backend interview or optimizing a production app,
 
 | Layer | Technology |
 |-------|------------|
-| Framework | Laravel 11.x |
+| Framework | Laravel 12.x |
 | Language | PHP 8.2+ |
 | Database | MySQL 8.x |
-| Dev Tool | [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar) |
+| Dev Tool | [Laravel Debugbar](https://github.com/majid-ali-dev/laravel-query-optimization) |
 | Seeder | Faker + batch inserts |
 | Frontend | Bootstrap 5 (via CDN) |
 
