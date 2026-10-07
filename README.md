@@ -136,28 +136,6 @@ Without index: type: ALL, key: NULL, Extra: Using filesort
 
 With index: type: ref, key: posts_user_id_index, Extra: Using where
 
-📁 Project Structure
-
-laravel-query-optimization/
-├── app/
-│   ├── Http/Controllers/
-│   │   └── PostController.php
-│   └── Models/
-│       ├── Post.php
-│       └── User.php
-├── database/
-│   ├── migrations/
-│   │   ├── xxxx_create_posts_table.php
-│   │   └── xxxx_add_user_id_index_to_posts_table.php
-│   ├── factories/
-│   │   └── PostFactory.php
-│   └── seeders/
-│       └── DatabaseSeeder.php
-├── resources/views/posts/
-│   └── index.blade.php
-├── routes/
-│   └── web.php
-└── README.md
 
 🧠 Key Concepts
 
