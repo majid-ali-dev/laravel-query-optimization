@@ -23,7 +23,7 @@ Every optimization technique here is:
 ## 📊 Benchmark Results
 
 **Query tested:**
-```sql
+
 SELECT * FROM posts WHERE user_id = ? ORDER BY created_at DESC LIMIT 20;
 Dataset: 100,000 posts across 1,000 users
 
@@ -33,26 +33,12 @@ With Index	✅ user_id	0.67 ms	1.23 ms	~100x
 ⚡ Adding a single index made this query almost 100x faster.
 
 🗺 Optimization Roadmap
-#	Topic	Status
-1	Indexing	✅ Done
-2	EXPLAIN	🚧 In Progress
-3	N+1 Problem	⏳ Planned
-4	Eager Loading	⏳ Planned
-5	Select Required Columns	⏳ Planned
-6	WHERE Optimization	⏳ Planned
-7	JOIN Optimization	⏳ Planned
-8	Pagination	⏳ Planned
-9	Composite Index	⏳ Planned
-10	Chunk / Lazy	⏳ Planned
-11	GROUP BY / ORDER BY	⏳ Planned
-12	Subqueries	⏳ Planned
-13	Query Caching	⏳ Planned
-14	Database Caching	⏳ Planned
-Legend: ✅ Done · 🚧 In Progress · ⏳ Planned
+#	Topic	
+1	Indexing
 
 🛠 Tech Stack
 Layer	Technology
-Framework	Laravel 11.x
+Framework	Laravel 12.x
 Language	PHP 8.2+
 Database	MySQL 8.x
 Dev Tool	Laravel Debugbar
@@ -61,19 +47,19 @@ Seeder	Faker + Batch Inserts
 Follow these steps to run the project locally.
 
 1. Clone the repository
-bash
+
 git clone https://github.com/majid-ali-dev/laravel-query-optimization.git
 cd laravel-query-optimization
 2. Install PHP dependencies
-bash
+
 composer install
 3. Install Laravel Debugbar (dev only)
-bash
+
 composer require barryvdh/laravel-debugbar --dev
 Debugbar shows every SQL query and its execution time at the bottom of each page.
 
 4. Configure environment
-bash
+
 cp .env.example .env
 php artisan key:generate
 Open .env and set your database credentials:
@@ -86,10 +72,10 @@ DB_DATABASE=indexing_demo
 DB_USERNAME=root
 DB_PASSWORD=
 5. Create the database
-bash
+
 mysql -u root -p -e "CREATE DATABASE indexing_demo;"
 6. Run migrations and seed data
-bash
+
 php artisan migrate:fresh --seed
 This creates:
 
@@ -98,7 +84,7 @@ This creates:
 100,000 posts (using batch inserts — completes in a few seconds)
 
 7. Start the development server
-bash
+
 php artisan serve
 Now visit: http://127.0.0.1:8000/posts
 
@@ -108,7 +94,7 @@ Follow these steps to see the indexing impact with your own eyes.
 ✅ Step 1: Test WITH Index (Default State)
 Open the search page:
 
-text
+
 http://127.0.0.1:8000/posts/search?user_id=440
 Look at Laravel Debugbar at the bottom → click the Queries tab.
 
@@ -121,26 +107,26 @@ Note the execution time. Expected: ~1 ms
 ✅ Step 2: Rollback the Index
 Open your terminal and run:
 
-bash
+
 php artisan migrate:rollback --step=1
 This removes the index from the posts table.
 
 ✅ Step 3: Test WITHOUT Index
 Refresh the same search page:
 
-text
+
 http://127.0.0.1:8000/posts/search?user_id=440
 Open Debugbar → Queries tab again.
 
 Note the new execution time. Expected: ~100+ ms
 
 ✅ Step 4: Re-Apply the Index
-bash
+
 php artisan migrate
 Refresh the page — you're back to the fast state.
 
 ✅ Step 5: Verify with EXPLAIN (Optional but Recommended)
-bash
+
 php artisan tinker
 php
 DB::select('EXPLAIN SELECT * FROM posts WHERE user_id = 440 ORDER BY created_at DESC LIMIT 20');
@@ -151,7 +137,7 @@ Without index: type: ALL, key: NULL, Extra: Using filesort
 With index: type: ref, key: posts_user_id_index, Extra: Using where
 
 📁 Project Structure
-text
+
 laravel-query-optimization/
 ├── app/
 │   ├── Http/Controllers/
@@ -172,7 +158,9 @@ laravel-query-optimization/
 ├── routes/
 │   └── web.php
 └── README.md
+
 🧠 Key Concepts
+
 What is Query Optimization?
 The process of making database queries faster and more efficient, so your application stays responsive even with large datasets.
 
@@ -190,14 +178,14 @@ Essential when filtering large tables (e.g., WHERE user_id = ?)
 Laravel Debugbar
 Install with:
 
-bash
+
 composer require barryvdh/laravel-debugbar --dev
 It displays query count, execution time, and the raw SQL at the bottom of every page.
 
 EXPLAIN
 Run inside Tinker:
 
-bash
+
 php artisan tinker
 php
 DB::select('EXPLAIN SELECT * FROM posts WHERE user_id = 50 ORDER BY created_at DESC LIMIT 20');
