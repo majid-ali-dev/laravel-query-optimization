@@ -29,10 +29,9 @@ Dataset: 100,000 posts across 1,000 users
 
 Scenario	Index	COUNT Time	SELECT Time	Speedup <br>
 Without Index	❌ None	24.2 ms	116 ms	1x <br>
-With Index	✅ user_id	0.67 ms	1.23 ms	~100x <br>
+With Index	✅ user_id	0.67 ms	1.23 ms	~100x <br> <br>
 ⚡ Adding a single index made this query almost 100x faster.
 
-🗺 Optimization Roadmap
 #	Topic	
 1	Indexing
 
