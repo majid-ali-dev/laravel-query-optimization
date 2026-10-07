@@ -27,9 +27,9 @@ Every optimization technique here is:
 SELECT * FROM posts WHERE user_id = ? ORDER BY created_at DESC LIMIT 20;
 Dataset: 100,000 posts across 1,000 users
 
-Scenario	Index	COUNT Time	SELECT Time	Speedup
-Without Index	❌ None	24.2 ms	116 ms	1x
-With Index	✅ user_id	0.67 ms	1.23 ms	~100x
+Scenario	Index	COUNT Time	SELECT Time	Speedup <br>
+Without Index	❌ None	24.2 ms	116 ms	1x <br>
+With Index	✅ user_id	0.67 ms	1.23 ms	~100x <br>
 ⚡ Adding a single index made this query almost 100x faster.
 
 🗺 Optimization Roadmap
